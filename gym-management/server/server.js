@@ -1,9 +1,10 @@
+require('dotenv').config();
+
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const authRoutes = require("./routes/authRoutes");
 const memberRoutes = require("./routes/memberRoutes");
-require('dotenv').config();
 
 const app = express();
 
@@ -13,8 +14,8 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/members", memberRoutes);
 
-// connect to MongoDB (UPDATED)
-mongoose.connect("mongodb://127.0.0.1:27017/gym-management")
+// connect to MongoDB (Atlas or Local via .env)
+mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log("MongoDB Connected ✅"))
 .catch(err => console.log("Mongo Error:", err));
 
