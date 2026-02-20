@@ -1,0 +1,36 @@
+.sidebar {
+  width: 220px;
+  min-height: 100vh;
+  background: #1e3c72;
+  color: white;
+  padding: 20px;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.sidebar-title {
+  margin-bottom: 30px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.sidebar-btn {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: none;
+  border-radius: 6px;
+  background: #2a5298;
+  color: white;
+  cursor: pointer;
+  text-align: left;
+}
+
+.sidebar-btn:hover {
+  background: #16305c;
+}
+
+.sidebar-btn.logout {
+  background: #dc3545;
+}
