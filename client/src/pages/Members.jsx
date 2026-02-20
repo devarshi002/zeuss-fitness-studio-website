@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+//import axios from "axios";
+import API from "../api";
 import "./Members.css";
 
 function Members() {
@@ -22,14 +23,11 @@ function Members() {
     try {
       if (editId) {
         // UPDATE API
-        await axios.put(
-          `http://localhost:5000/api/members/${editId}`,
-          formData,
-        );
+        await API.put(`/members/${editId}`, formData);
         alert("Member Updated");
       } else {
         // CREATE API
-        await axios.post("http://localhost:5000/api/members", formData);
+        await API.post("/members", formData);
         alert("Member Added");
       }
 
@@ -50,7 +48,7 @@ function Members() {
 
   const fetchMembers = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/members");
+      const res = await API.get("/members");
       setMembers(res.data);
     } catch (error) {
       console.error("Fetch Error:", error);
@@ -60,7 +58,7 @@ function Members() {
   // Delete Member
   const deleteMember = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/members/${id}`);
+      await API.delete(`/members/${id}`);
       alert("Member Deleted");
       fetchMembers();
     } catch (error) {
